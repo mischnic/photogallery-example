@@ -1,5 +1,10 @@
 import * as React from 'react';
 import * as style from 'styles/components/Photo.scss';
 
-const Photo = () => <div className={style.wrapper}>photo</div>;
+const Photo = ({ title, url }: { title: string; url: string }) => (
+  <div className={style.wrapper}>
+    <img src={url} />
+    <p>{title}</p>
+  </div>
+);
 export default Photo;
