@@ -1,28 +1,28 @@
-import { observable } from 'mobx';
+import { observable, action } from 'mobx';
+import { API_URL } from 'config/index';
 
 interface Photo {
+  albumId: number;
   id: number;
   title: string;
   url: string;
+  thumbnailUrl: string;
 }
 
 export default class GalleryStore {
+  limit = 10;
+
   @observable
-  photos: Photo[] = [
-    {
-      id: 1,
-      title: 'Image 1',
-      url: 'https://placekitten.com/300/300',
-    },
-    {
-      id: 2,
-      title: 'Image 2',
-      url: 'https://placebear.com/300/300',
-    },
-    {
-      id: 3,
-      title: 'Image 3',
-      url: 'https://fillmurray.com/300/300',
-    },
-  ];
+  photos: Photo[] = [];
+
+  @action
+  async fetchPhotos() {
+    try {
+      const response = await fetch(`${API_URL}/photos?_limit=${this.limit}`);
+      const result = await response.json();
+      this.photos = result;
+    } catch (err) {
+      console.error(err);
+    }
+  }
 }

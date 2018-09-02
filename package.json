@@ -35,7 +35,7 @@
     "typescript": "^3.0.3"
   },
   "scripts": {
-    "dev:typed-css-modules": "tcm -p src/**/*.scss -w --silent",
+    "dev:typed-css-modules": "tcm --pattern \"src/**/*.scss\" -w --silent",
     "dev:parcel": "parcel src/index.html",
     "dev": "concurrently \"npm run dev:parcel\" \"npm run dev:typed-css-modules\"",
     "build": "parcel build src/index.html",

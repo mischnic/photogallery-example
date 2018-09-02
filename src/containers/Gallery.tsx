@@ -13,6 +13,11 @@ interface State {}
 @inject('galleryStore')
 @observer
 export default class Gallery extends React.Component<Props, State> {
+  componentDidMount = () => {
+    const { galleryStore } = this.props;
+    galleryStore.fetchPhotos();
+  };
+
   renderPhotos = () => {
     const { galleryStore } = this.props;
     const { photos } = galleryStore;
