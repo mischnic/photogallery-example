@@ -70,3 +70,4 @@ dist/
 .cache
 .env
 .vscode
+src/styles/**/*.scss.d.ts
