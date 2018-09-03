@@ -9,6 +9,7 @@
   "dependencies": {
     "mobx": "^5.1.0",
     "mobx-react": "^5.2.5",
+    "normalize.css": "^8.0.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-router-dom": "^4.3.1"
@@ -36,8 +37,9 @@
   },
   "scripts": {
     "dev:typed-css-modules": "tcm --pattern \"src/**/*.scss\" -w --silent",
+    "dev:typed-css-modules:clear": "find . -type f -name '*.scss.d.ts' -delete",
     "dev:parcel": "parcel src/index.html",
-    "dev": "concurrently \"npm run dev:parcel\" \"npm run dev:typed-css-modules\"",
+    "dev": "npm run dev:typed-css-modules:clear && concurrently \"npm run dev:parcel\" \"npm run dev:typed-css-modules\"",
     "build": "parcel build src/index.html",
     "lint": "tslint --project .",
     "prettier": "prettier --trailing-comma es5 --single-quote --parser typescript --write 'src/**/*.{ts,tsx,js}'"

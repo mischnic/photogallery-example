@@ -1,0 +1,11 @@
+@import '~/styles/base.scss';
+
+.wrapper {
+  background-color: #ccc;
+  text-align: center;
+  padding: $photo--padding;
+}
+
+.img {
+  max-width: 100%;
+}

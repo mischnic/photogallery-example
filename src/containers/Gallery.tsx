@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
+import { Link } from 'react-router-dom';
 import * as styles from 'styles/containers/Gallery.scss';
 import GalleryStore from 'stores/GalleryStore';
-import Photo from 'components/Photo';
+import Thumbnail from 'components/Thumbnail';
 
 interface Props {
   galleryStore: GalleryStore;
@@ -22,7 +23,14 @@ export default class Gallery extends React.Component<Props, State> {
     const { galleryStore } = this.props;
     const { photos } = galleryStore;
 
-    return photos.map(photo => <Photo key={photo.id} {...photo} />);
+    return photos.map(photo => {
+      const { id, title, thumbnailUrl: url } = photo;
+      return (
+        <Link className={styles.link} to={`/photo/${id}`} key={id}>
+          <Thumbnail title={title} url={url} />
+        </Link>
+      );
+    });
   };
 
   render() {
