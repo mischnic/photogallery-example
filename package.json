@@ -43,7 +43,7 @@
     "dev:parcel": "parcel src/index.html",
     "dev": "npm run typed-css-modules:clear && concurrently \"npm run dev:parcel\" \"npm run typed-css-modules:watch\"",
     "lint": "tslint --project .",
-    "prebuild": "rm -rf dist && npm run typed-css-modules:clear && npm run typed-css-modules:build",
+    "prebuild": "rm -rf dist/* && npm run typed-css-modules:clear && npm run typed-css-modules:build",
     "prettier": "prettier --trailing-comma es5 --single-quote --parser typescript --write 'src/**/*.{ts,tsx,js}'",
     "typed-css-modules:build": "tcm --pattern \"src/**/*.scss\" --silent",
     "typed-css-modules:clear": "find . -type f -name '*.scss.d.ts' -delete",
