@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
+import * as _ from 'lodash-es';
 import * as styles from 'styles/containers/PhotoDetails.scss';
 import GalleryStore from 'stores/GalleryStore';
 
@@ -36,7 +37,7 @@ export default class PhotoDetails extends React.Component<Props, State> {
 
     const { photos } = galleryStore;
 
-    const photo = photos.find(p => p.id === parseInt(photoId, 10));
+    const photo = _.find(photos, p => p.id === parseInt(photoId, 10));
     if (!photo) {
       return null;
     }
