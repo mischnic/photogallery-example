@@ -20,9 +20,13 @@ const App = () => (
       <Route
         render={({ location }) => (
           <div className={styles.wrapper}>
+            <div className={styles.header}>
+              <span>Photo Gallery</span>
+              {location.pathname !== '/' && <Link to="/">Back to gallery</Link>}
+            </div>
             <div className={styles.content}>
               <PoseGroup>
-                <RouteContainer key={location.key}>
+                <RouteContainer key={location.key || '/'}>
                   <Switch location={location}>
                     <Route exact path="/" component={Gallery} />
                     <Route

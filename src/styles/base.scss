@@ -1,1 +1,10 @@
-$photo--padding: 10px;
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+$padding--normal: 10px;
+$color--dark: #52489c;
+$color--light: #ebebeb;
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}

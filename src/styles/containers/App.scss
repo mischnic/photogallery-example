@@ -1,8 +1,23 @@
+@import '~/styles/base.scss';
+
 .wrapper {
-  background-color: pink;
-  padding: 10px;
+  background-color: $color--dark;
+  padding: $padding--normal * 5;
+  min-height: 100vh;
+}
+
+.header {
+  margin-bottom: $padding--normal;
+  font-size: 1.5rem;
+  color: $color--light;
+  display: flex;
+  justify-content: space-between;
+
+  a {
+    color: $color--light;
+    text-decoration: none;
+  }
 }
 
 .content {
-  padding: 10px
 }

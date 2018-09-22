@@ -1,9 +1,9 @@
 @import '~/styles/base.scss';
 
 .wrapper {
-  background-color: #ccc;
+  background-color: $color--light;
   text-align: center;
-  padding: $photo--padding;
+  padding: $padding--normal;
 }
 
 .img {
