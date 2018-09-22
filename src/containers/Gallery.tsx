@@ -27,7 +27,7 @@ export default class Gallery extends React.Component<Props, State> {
     return _.map(photos, photo => {
       const { id, title, thumbnailUrl: url } = photo;
       return (
-        <Link className={styles.link} to={`/photo/${id}`} key={id}>
+        <Link className={styles.link} key={id} to={`/photo/${id}`}>
           <Thumbnail title={title} url={url} />
         </Link>
       );
