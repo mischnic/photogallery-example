@@ -50,7 +50,7 @@
     "prettier": "prettier --trailing-comma es5 --single-quote --write 'src/**/*.{ts,tsx,js}'",
     "typed-css-modules:build": "tcm --pattern \"src/**/*.scss\" --silent",
     "typed-css-modules:clear": "find . -type f -name '*.scss.d.ts' -delete",
-    "typed-css-modules:watch": "tcm --pattern \"src/**/*.scss\" -w"
+    "typed-css-modules:watch": "tcm --pattern \"src/**/*.scss\" -w -silent"
   },
   "husky": {
     "hooks": {
