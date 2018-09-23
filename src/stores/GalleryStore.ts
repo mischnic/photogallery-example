@@ -15,14 +15,35 @@ export default class GalleryStore {
   @observable
   photos: Photo[] = [];
 
+  @observable
+  page = 1;
+
   @action
-  async fetchPhotos() {
+  setPreviousPage = () => {
+    if (this.page === 1) {
+      return;
+    }
+
+    this.page -= 1;
+    this.fetchPhotos();
+  };
+
+  @action
+  setNextPage = () => {
+    this.page += 1;
+    this.fetchPhotos();
+  };
+
+  @action
+  fetchPhotos = async () => {
     try {
-      const response = await fetch(`${API_URL}/photos?_limit=${this.limit}`);
+      const response = await fetch(
+        `${API_URL}/photos?_limit=${this.limit}&_page=${this.page}`
+      );
       const result = await response.json();
       this.photos = result;
     } catch (err) {
       console.error(err);
     }
-  }
+  };
 }

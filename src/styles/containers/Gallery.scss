@@ -1,14 +1,37 @@
 @import '~/styles/base.scss';
 
 .wrapper {
+}
+
+.gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-auto-rows: 1fr;
   grid-gap: 10px;
 }
 
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  margin-top: $padding--normal;
+  color: $color--light;
+}
+
+.pagination__page {
+  padding: $padding--normal;
+}
+
+.pagination__button {
+  padding: $padding--normal;
+  border: 0;
+  background: $color--light;
+  width: 100px;
+}
+
 .link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
   background-color: $color--light;
-  color: #000;
-  text-decoration: none;
 }

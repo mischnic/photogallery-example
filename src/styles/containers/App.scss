@@ -2,8 +2,9 @@
 
 .wrapper {
   background-color: $color--dark;
+  box-sizing: border-box;
   padding: $padding--normal * 5;
-  min-height: 100vh;
+  min-height: calc(100vh);
 }
 
 .header {
