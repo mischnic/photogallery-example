@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as styles from 'styles/components/Thumbnail.scss';
+import * as styles from '~/styles/components/Thumbnail.scss';
 
 const Thumbnail = ({ title, url }: { title: string; url: string }) => (
   <div className={styles.wrapper}>

@@ -2,10 +2,10 @@ import * as React from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import { Provider } from 'mobx-react';
 import posed, { PoseGroup } from 'react-pose';
-import RootStore from 'stores/RootStore';
-import * as styles from 'styles/containers/App.scss';
-import Gallery from 'containers/Gallery';
-import PhotoDetails from 'containers/PhotoDetails';
+import RootStore from '~/stores/RootStore';
+import * as styles from '~/styles/containers/App.scss';
+import Gallery from '~/containers/Gallery';
+import PhotoDetails from '~/containers/PhotoDetails';
 
 const rootStore = new RootStore();
 

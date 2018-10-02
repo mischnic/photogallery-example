@@ -1,5 +1,5 @@
 import { observable, action } from 'mobx';
-import { API_URL } from 'config/index';
+import { API_URL } from '~/config/index';
 
 interface Photo {
   albumId: number;

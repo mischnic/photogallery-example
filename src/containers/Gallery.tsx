@@ -3,9 +3,9 @@ import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import posed, { PoseGroup } from 'react-pose';
 import * as _ from 'lodash-es';
-import * as styles from 'styles/containers/Gallery.scss';
-import GalleryStore from 'stores/GalleryStore';
-import Thumbnail from 'components/Thumbnail';
+import * as styles from '~/styles/containers/Gallery.scss';
+import GalleryStore from '~/stores/GalleryStore';
+import Thumbnail from '~/components/Thumbnail';
 
 interface Props {
   galleryStore: GalleryStore;
