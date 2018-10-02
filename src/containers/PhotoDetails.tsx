@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import * as _ from 'lodash-es';
-import * as styles from 'styles/containers/PhotoDetails.scss';
-import GalleryStore from 'stores/GalleryStore';
+import * as styles from '~/styles/containers/PhotoDetails.scss';
+import GalleryStore from '~/stores/GalleryStore';
 
 interface Props {
   galleryStore: GalleryStore;
