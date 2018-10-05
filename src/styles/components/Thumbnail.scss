@@ -1,13 +1,17 @@
 @import '~/styles/base.scss';
 
-.wrapper {
-  text-align: center;
-  padding: $padding--normal;
+.top {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
-a {
-  color: #000;
-  text-decoration: none;
+.bottom {
+  display: flex;
+  padding: $padding--normal * 2;
+  background-color: $color--gray__dark;
+  width: 100%;
 }
 
 .img {

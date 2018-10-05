@@ -35,7 +35,6 @@ export default class Gallery extends React.Component<Props, State> {
   handleKeyEvents = (e: KeyboardEvent) => {
     const { galleryStore } = this.props;
 
-    e.preventDefault();
     const { code } = e;
 
     switch (code) {
@@ -57,8 +56,8 @@ export default class Gallery extends React.Component<Props, State> {
     return _.map(photos, (photo, i) => {
       const { id, title, thumbnailUrl: url } = photo;
       return (
-        <GalleryItem i={i} className={styles.link} key={id}>
-          <Link to={`/photo/${id}`}>
+        <GalleryItem i={i} key={id}>
+          <Link className={styles.link} to={`/photo/${id}`}>
             <Thumbnail title={title} url={url} />
           </Link>
         </GalleryItem>
