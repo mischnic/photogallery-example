@@ -1,7 +1,7 @@
 @import '~/styles/base.scss';
 
 .wrapper {
-  background-color: $color--dark;
+  background-color: $color--gray__light;
   box-sizing: border-box;
   padding: $padding--normal * 5;
   min-height: calc(100vh);
@@ -10,13 +10,12 @@
 .header {
   margin-bottom: $padding--normal;
   font-size: 1.5rem;
-  color: $color--light;
   display: flex;
   justify-content: space-between;
 
   a {
-    color: $color--light;
     text-decoration: none;
+    color: lighten($color--gray__dark, 20%);
   }
 }
 

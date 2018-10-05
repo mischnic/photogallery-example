@@ -7,9 +7,9 @@
     "noImplicitAny": true,
     "experimentalDecorators": true,
     "lib": ["dom", "es2015"],
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "~*": ["*"]
+      "~*": ["./src/*"]
     }
   }
 }

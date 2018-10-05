@@ -7,14 +7,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-auto-rows: 1fr;
-  grid-gap: 10px;
+  grid-gap: $padding--normal * 5;
 }
 
 .pagination {
   display: flex;
   justify-content: space-between;
-  margin-top: $padding--normal;
-  color: $color--light;
+  margin-top: $padding--normal * 2;
 }
 
 .pagination__page {
@@ -24,14 +23,21 @@
 .pagination__button {
   padding: $padding--normal;
   border: 0;
-  background: $color--light;
   width: 100px;
+  box-shadow: $box-shadow;
 }
 
 .link {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   min-height: 300px;
-  background-color: $color--light;
+  background-color: #fff;
+  padding-top: $padding--normal * 4;
+  box-shadow: $box-shadow;
+  color: lighten($color--gray__dark, 60%);
+  text-decoration: none;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }

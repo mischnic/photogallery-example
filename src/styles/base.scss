@@ -1,10 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 
 $padding--normal: 10px;
-$color--dark: #3a405a;
-$color--light: #ebebeb;
+$color--gray__light: #f0f3f7;
+$color--gray__dark: #363636;
+$box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
 
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
 }
