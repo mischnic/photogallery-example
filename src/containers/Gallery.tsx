@@ -9,6 +9,11 @@ import Thumbnail from '~/components/Thumbnail';
 
 interface Props {
   galleryStore: GalleryStore;
+  match: {
+    params: {
+      albumId: number;
+    };
+  };
 }
 
 interface State {}
@@ -22,8 +27,13 @@ const GalleryItem = posed.div({
 @observer
 export default class Gallery extends React.Component<Props, State> {
   componentDidMount = () => {
-    const { galleryStore } = this.props;
-    galleryStore.fetchPhotos();
+    const {
+      galleryStore,
+      match: {
+        params: { albumId },
+      },
+    } = this.props;
+    galleryStore.fetchPhotos(albumId);
 
     document.addEventListener('keydown', this.handleKeyEvents);
   };
@@ -33,7 +43,12 @@ export default class Gallery extends React.Component<Props, State> {
   };
 
   handleKeyEvents = (e: KeyboardEvent) => {
-    const { galleryStore } = this.props;
+    const {
+      galleryStore,
+      match: {
+        params: { albumId },
+      },
+    } = this.props;
 
     const { code } = e;
 
@@ -41,10 +56,16 @@ export default class Gallery extends React.Component<Props, State> {
       default:
         break;
       case 'ArrowLeft':
-        galleryStore.setPreviousPage();
+        const prevHandler = albumId
+          ? galleryStore.setPreviousAlbumPage
+          : galleryStore.setPreviousPhotoPage;
+        prevHandler();
         break;
       case 'ArrowRight':
-        galleryStore.setNextPage();
+        const nextHandler = albumId
+          ? galleryStore.setNextAlbumPage
+          : galleryStore.setNextPhotoPage;
+        nextHandler();
         break;
     }
   };
@@ -66,21 +87,34 @@ export default class Gallery extends React.Component<Props, State> {
   };
 
   renderPagination = () => {
-    const { galleryStore } = this.props;
+    const {
+      galleryStore,
+      match: {
+        params: { albumId },
+      },
+    } = this.props;
 
     return (
       <React.Fragment>
         <button
-          onClick={galleryStore.setPreviousPage}
+          onClick={
+            albumId
+              ? galleryStore.setPreviousAlbumPage
+              : galleryStore.setPreviousPhotoPage
+          }
           className={styles.pagination__button}
         >
           Previous
         </button>
         <span className={styles.pagination__page}>
-          Page {galleryStore.page}
+          Page {albumId ? galleryStore.albumPage : galleryStore.photoPage}
         </span>
         <button
-          onClick={galleryStore.setNextPage}
+          onClick={
+            albumId
+              ? galleryStore.setNextAlbumPage
+              : galleryStore.setNextPhotoPage
+          }
           className={styles.pagination__button}
         >
           Next
@@ -90,9 +124,10 @@ export default class Gallery extends React.Component<Props, State> {
   };
 
   render() {
+    console.log(this.props);
     return (
-      <div className={styles.wrapper} onKeyDown={console.log} tabIndex={-1}>
-        <div className={styles.gallery} onKeyDown={console.log}>
+      <div className={styles.wrapper} tabIndex={-1}>
+        <div className={styles.gallery}>
           <PoseGroup>{this.renderPhotos()}</PoseGroup>
         </div>
         <div className={styles.pagination}>{this.renderPagination()}</div>

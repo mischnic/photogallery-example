@@ -1,0 +1,33 @@
+@import '~/styles/base.scss';
+
+.gallery {
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  margin-top: $padding--normal * 2;
+}
+
+.pagination__page {
+  padding: $padding--normal;
+}
+
+.pagination__button {
+  padding: $padding--normal;
+  border: 0;
+  width: 100px;
+  box-shadow: $box-shadow;
+}
+
+.link {
+  display: block;
+  padding: $padding--normal;
+  background-color: #fff;
+  text-decoration: none;
+  color: lighten($color--gray__dark, 20%);
+
+  & + & {
+    margin-top: $padding--normal;
+  }
+}

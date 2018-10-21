@@ -6,6 +6,7 @@ import RootStore from '~/stores/RootStore';
 import * as styles from '~/styles/containers/App.scss';
 import Gallery from '~/containers/Gallery';
 import PhotoDetails from '~/containers/PhotoDetails';
+import AlbumList from '~containers/AlbumList';
 
 const rootStore = new RootStore();
 
@@ -21,19 +22,25 @@ const App = () => (
         render={({ location }) => (
           <div className={styles.wrapper}>
             <div className={styles.header}>
-              <span>Photo Gallery</span>
-              {location.pathname !== '/' && <Link to="/">Back to gallery</Link>}
+              <Link className={styles.menuitem} to="/">
+                Photo Gallery
+              </Link>
+              <Link className={styles.menuitem} to="/album">
+                Albums
+              </Link>
             </div>
             <div className={styles.content}>
               <PoseGroup>
                 <RouteContainer key={location.key || '/'}>
                   <Switch location={location}>
                     <Route exact path="/" component={Gallery} />
+                    <Route exact path="/album" component={AlbumList} />
                     <Route
                       exact
                       path="/photo/:photoId"
                       component={PhotoDetails}
                     />
+                    <Route exact path="/album/:albumId" component={Gallery} />
                   </Switch>
                 </RouteContainer>
               </PoseGroup>
