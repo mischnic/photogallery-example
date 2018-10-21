@@ -45,6 +45,7 @@ export default class PhotoDetails extends React.Component<Props, State> {
     return (
       <div>
         <img src={photo.url} />
+        <p>{photo.title}</p>
       </div>
     );
   };

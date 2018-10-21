@@ -9,39 +9,82 @@ interface Photo {
   thumbnailUrl: string;
 }
 
+interface Album {
+  userId: number;
+  id: number;
+  title: string;
+}
+
 export default class GalleryStore {
-  limit = 10;
+  photoLimit = 10;
+  albumLimit = 10;
 
   @observable
   photos: Photo[] = [];
 
   @observable
-  page = 1;
+  albums: Album[] = [];
+
+  @observable
+  photoPage = 1;
+
+  @observable
+  albumPage = 1;
 
   @action
-  setPreviousPage = () => {
-    if (this.page === 1) {
+  setPreviousPhotoPage = () => {
+    if (this.photoPage === 1) {
       return;
     }
 
-    this.page -= 1;
+    this.photoPage -= 1;
     this.fetchPhotos();
   };
 
   @action
-  setNextPage = () => {
-    this.page += 1;
+  setNextPhotoPage = () => {
+    this.photoPage += 1;
     this.fetchPhotos();
   };
 
+  setPreviousAlbumPage = () => {
+    if (this.albumPage === 1) {
+      return;
+    }
+
+    this.albumPage -= 1;
+    this.fetchAlbums();
+  };
+
   @action
-  fetchPhotos = async () => {
+  setNextAlbumPage = () => {
+    this.albumPage += 1;
+    this.fetchAlbums();
+  };
+
+  @action
+  fetchPhotos = async (albumId?: number) => {
     try {
-      const response = await fetch(
-        `${API_URL}/photos?_limit=${this.limit}&_page=${this.page}`
-      );
+      const url = albumId
+        ? `${API_URL}/photos?_limit=${this.photoLimit}&_page=${this.albumPage}`
+        : `${API_URL}/photos?_limit=${this.photoLimit}&_page=${this.photoPage}`;
+
+      const response = await fetch(url);
       const result = await response.json();
       this.photos = result;
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  @action
+  fetchAlbums = async () => {
+    try {
+      const response = await fetch(
+        `${API_URL}/albums?_limit=${this.albumLimit}&_page=${this.albumPage}`
+      );
+      const result = await response.json();
+      this.albums = result;
     } catch (err) {
       console.error(err);
     }

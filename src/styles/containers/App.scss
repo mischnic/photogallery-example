@@ -11,11 +11,16 @@
   margin-bottom: $padding--normal;
   font-size: 1.5rem;
   display: flex;
-  justify-content: space-between;
 
   a {
     text-decoration: none;
     color: lighten($color--gray__dark, 20%);
+  }
+}
+
+.menuitem {
+  & + & {
+    margin-left: $padding--normal * 2;
   }
 }
 
